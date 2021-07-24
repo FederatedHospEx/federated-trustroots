@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   pull_request:
       types: [opened, reopened]
+  issues:
+      types: [opened, reopened, transferred]
+  discussion:
+      types: [opened, transferred]
 
 jobs:
   ping_matrix:
