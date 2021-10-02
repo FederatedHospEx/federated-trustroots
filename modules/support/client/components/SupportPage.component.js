@@ -1,5 +1,5 @@
 // External dependencies
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,6 +7,7 @@ import React from 'react';
 import '@/config/client/i18n';
 import Board from '@/modules/core/client/components/Board.js';
 import SupportForm from './SupportForm';
+import { brandName } from '@/modules/core/client/utils/constants';
 
 export default function SupportPage({ user }) {
   const { t } = useTranslation('support');
@@ -19,7 +20,7 @@ export default function SupportPage({ user }) {
             <div className="col-xs-12 text-center">
               <br />
               <br />
-              <h2>{t('Trustroots Support')}</h2>
+              <h2>{t(brandName + ' Support')}</h2>
             </div>
           </div>
         </div>
@@ -33,9 +34,9 @@ export default function SupportPage({ user }) {
           <div className="col-xs-12 col-md-4 col-lg-5">
             <h3>{t('See also')}</h3>
             <ul className="list-unstyled lead">
-              <li>
+              {/*               <li>
                 <a href="/faq">{t('Frequently Asked Questions')}</a>
-              </li>
+              </li> */}
               {user && (
                 <li>
                   <a href="/profile/edit/account#remove">
@@ -43,12 +44,12 @@ export default function SupportPage({ user }) {
                   </a>
                 </li>
               )}
-              <li>
+              {/*               <li>
                 <Trans t={t} ns="support">
                   <a href="/volunteering">Become a volunteer</a> and make a
                   difference!
                 </Trans>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
