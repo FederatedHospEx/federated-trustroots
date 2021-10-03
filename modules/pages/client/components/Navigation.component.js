@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { userType } from '@/modules/users/client/users.prop-types';
 import { useTranslation } from 'react-i18next';
 
-export default function Navigation({ user, onSignout, isNativeMobileApp }) {
+export default function Navigation({ user, onSignout }) {
   const { t } = useTranslation('pages');
 
   return (
@@ -29,9 +29,9 @@ export default function Navigation({ user, onSignout, isNativeMobileApp }) {
           {t('Host')}
         </a>
 
-        <a href="/offer/meet" className="list-group-item">
+        {/*         <a href="/offer/meet" className="list-group-item">
           {t('Meet')}
-        </a>
+        </a> */}
 
         <a
           href={`/profile/${user.username}/contacts`}
@@ -44,9 +44,9 @@ export default function Navigation({ user, onSignout, isNativeMobileApp }) {
           {t('Find people')}
         </a>
 
-        <a href="/circles" className="list-group-item">
+        {/*         <a href="/circles" className="list-group-item">
           {t('Circles')}
-        </a>
+        </a> */}
 
         <a href="/profile/edit/account" className="list-group-item">
           {t('Account')}
@@ -70,12 +70,15 @@ export default function Navigation({ user, onSignout, isNativeMobileApp }) {
         <a className="list-group-item" href="/about">
           {t('About')}
         </a>
+        {/*
         <a className="list-group-item" href="https://ideas.trustroots.org/">
           {t('Blog')}
         </a>
+        */}
         <a className="list-group-item" href="/support">
           {t('Contact & Support')}
         </a>
+        {/*
         <a className="list-group-item" href="/faq">
           {t('FAQ')}
         </a>
@@ -94,10 +97,11 @@ export default function Navigation({ user, onSignout, isNativeMobileApp }) {
         <a className="list-group-item" href="https://trustroots.teemill.com">
           {t('Shop')}
         </a>
+        */}
       </div>
 
       <div className="container font-brand-regular">
-        {!isNativeMobileApp && (
+        {/* {!isNativeMobileApp && (
           <p className="home-apps">
             <a
               href="https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp"
@@ -143,9 +147,9 @@ export default function Navigation({ user, onSignout, isNativeMobileApp }) {
             </a>
             <br />
           </p>
-        )}
+        )} */}
         <ul className="list-inline text-center">
-          <li>
+          {/*           <li>
             <p>
               <a
                 href="https://www.facebook.com/trustroots.org"
@@ -188,11 +192,11 @@ export default function Navigation({ user, onSignout, isNativeMobileApp }) {
                 Instagram
               </a>
             </p>
-          </li>
+          </li> */}
           <li>
             <p>
               <a
-                href="https://github.com/Trustroots/trustroots"
+                href="https://github.com/OpenHospitalityNetwork"
                 className="btn btn-default center-block"
                 aria-label={t('Trustroots at GitHub')}
               >
