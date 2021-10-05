@@ -19,7 +19,7 @@ This is how to configure production server.
 - Nginx v1.8.x
 - Redirect port 80 to 443.
 - Redirect non-www to www.
-- Proxy traffic to port 3000 (NodeJS app) with [Passenger](https://www.phusionpassenger.com/) v5.x [Installation instructions](https://www.phusionpassenger.com/documentation/Users%20guide%20Nginx.html#install_on_debian_ubuntu)
+- Proxy traffic to port 3000 (NodeJS app) with [Passenger](https://www.phusionpassenger.com/) v5.x [Installation instructions](https://www.phusionpassenger.com/library/install/nginx/apt_repo/)
 - Serve /public/ directly with Nginx (without NodeJS in between).
 
 Make sure `/etc/nginx/nginx.conf` has these:
