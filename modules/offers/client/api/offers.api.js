@@ -43,6 +43,9 @@ export async function getOffer(offerId) {
  * @returns Promise<Offer[]> - array of the found offers with limited info, mainly offer id and type.
  */
 export async function queryOffers(query = {}) {
-  const { data } = await axios.get(`/api/offers?${new URLSearchParams(query)}`);
+  const { data } = await axios.get(
+    `/api/offers?${new URLSearchParams(query)}`,
+    { baseURL: `http://192.168.0.134/` },
+  );
   return data;
 }
