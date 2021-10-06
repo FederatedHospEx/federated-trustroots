@@ -2,7 +2,7 @@ name: Notify matrix when a discussion is started
 
 on:
   discussion:
-      types: [opened, transferred]
+      types: [created, transferred]
 
 jobs:
   ping_matrix:
