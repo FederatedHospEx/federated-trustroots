@@ -465,10 +465,6 @@ module.exports.init = function (connection) {
   // Initialize express app
   const app = express();
 
-  const cors = require('cors');
-
-  app.use(cors());
-
   // Initialize sentry request handler, must be first
   this.initSentryRequestHandler(app);
 

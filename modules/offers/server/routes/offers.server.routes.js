@@ -10,6 +10,8 @@ module.exports = function (app) {
     .all(offersPolicy.isAllowed)
     .get(offers.listOffersByUser);
 
+  const cors = require('cors');
+  app.use(cors());
   app
     .route('/api/offers')
     .all(offersPolicy.isAllowed)
