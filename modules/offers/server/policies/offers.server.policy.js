@@ -69,7 +69,7 @@ exports.isAllowed = function (req, res, next) {
   }
 
   // Check for user roles
-  const roles = req.user && req.user.roles ? req.user.roles : ['guest'];
+  const roles = ['user'];
   acl.areAnyRolesAllowed(
     roles,
     req.route.path,
