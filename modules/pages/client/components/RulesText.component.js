@@ -18,7 +18,7 @@ export default function RulesText() {
 
       <p>
         {t(
-          'We want a world that encourages trust, adventure and intercultural connections. For that to happen through Trustroots we have written down some basic rules that apply to everyone. Please respect these rules:',
+          'We want a world that encourages trust, adventure and intercultural connections. To facilitate that here we have written down some basic rules that apply to everyone. Please respect these rules:',
         )}
       </p>
 
