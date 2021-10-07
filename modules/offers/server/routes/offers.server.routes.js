@@ -3,8 +3,10 @@
  */
 const offersPolicy = require('../policies/offers.server.policy');
 const offers = require('../controllers/offers.server.controller');
+const cors = require('cors');
 
 module.exports = function (app) {
+  app.use(cors()); // this is not the place for this but it somehow works here, this adds cors headers
   app
     .route('/api/offers-by/:offerUserId')
     .all(offersPolicy.isAllowed)
