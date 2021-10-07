@@ -357,16 +357,29 @@ export default function SearchMap({
 
     try {
       // @TODO: cancellation when need to re-fetch
+      const dataFederated = await queryOffers(
+        {
+          filters,
+          ...boundingBox,
+        },
+        `http://192.168.0.134/`,
+      );
       const data = await queryOffers({
         filters,
         ...boundingBox,
       });
+      dataFederated.features.map(obj => {
+        const rObj = obj;
+        rObj.properties.offer = 'federated-host-yes';
+        return rObj;
+      });
+      data.features = data.features.concat(dataFederated.features);
       setOffers(data);
-    } catch {
+    } catch (err) {
       // @TODO Error handling
       process.env.NODE_ENV === 'development' &&
         // eslint-disable-next-line no-console
-        console.error('Could not load offers.');
+        console.error(err);
     }
   }
 
