@@ -314,13 +314,19 @@ export default function SearchMap({
     }
 
     const layerId = features[0]?.layer?.id;
+    // add also federated-host-maybe and no
+    const isFederated = features[0]?.properties?.offer === 'federated-host-yes';
 
     switch (layerId) {
       // Hosting or meeting offer
       case unclusteredPointLayer.id:
         if (features[0]?.id) {
           setSelectedState(features[0]);
-          openOfferById(features[0].id);
+          if (!isFederated) {
+            openOfferById(features[0].id);
+          } else {
+            window.open('https://openhospitality.network');
+          }
         }
         break;
       // Clusters
