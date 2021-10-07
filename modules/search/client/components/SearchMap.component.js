@@ -325,7 +325,7 @@ export default function SearchMap({
           if (!isFederated) {
             openOfferById(features[0].id);
           } else {
-            window.open('https://openhospitality.network');
+            window.open('https://openhospitality.network'); // get this from elsewhere
           }
         }
         break;
