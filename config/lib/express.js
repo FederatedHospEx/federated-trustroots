@@ -323,6 +323,7 @@ module.exports.initHelmetHeaders = function (app) {
           'fcm.googleapis.com',
           'www.facebook.com',
           'https://sentry.io',
+          `http://192.168.0.134/`,
         ],
 
         // Allows control over Flash and other plugins.
