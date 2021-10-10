@@ -39,10 +39,10 @@ function trTypesToggleDirective() {
         id: 'host',
         label: 'Hosts',
       },
-      {
+      /*       {
         id: 'meet',
         label: 'Meetups',
-      },
+      }, */
     ];
 
     // States of toggle switches inside this directive
