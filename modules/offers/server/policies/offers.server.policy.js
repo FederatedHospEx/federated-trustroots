@@ -54,11 +54,11 @@ exports.invokeRolesPolicies = function () {
  */
 exports.isAllowed = function (req, res, next) {
   // No offers for non-authenticated nor for authenticated but un-published users
-  if (!req.user || (req.user && !req.user.public)) {
+  /*   if (!req.user || (req.user && !req.user.public)) {
     return res.status(403).send({
       message: errorService.getErrorMessageByKey('forbidden'),
     });
-  }
+  } */
 
   // If an offer is being processed and the current user owns it, then allow any manipulation
   if (req.offer && req.user && req.offer.user === req.user._id) {
@@ -66,7 +66,7 @@ exports.isAllowed = function (req, res, next) {
   }
 
   // Check for user roles
-  const roles = req.user && req.user.roles ? req.user.roles : ['guest'];
+  const roles = ['user'];
   acl.areAnyRolesAllowed(
     roles,
     req.route.path,

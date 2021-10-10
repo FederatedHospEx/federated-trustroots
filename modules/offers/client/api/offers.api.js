@@ -42,7 +42,10 @@ export async function getOffer(offerId) {
  * @param {int} offerId - id of offer
  * @returns Promise<Offer[]> - array of the found offers with limited info, mainly offer id and type.
  */
-export async function queryOffers(query = {}) {
-  const { data } = await axios.get(`/api/offers?${new URLSearchParams(query)}`);
+export async function queryOffers(query = {}, baseUrl = ``) {
+  const { data } = await axios.get(
+    `/api/offers?${new URLSearchParams(query)}`,
+    { baseURL: baseUrl },
+  );
   return data;
 }

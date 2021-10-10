@@ -371,11 +371,11 @@ exports.delete = function (req, res) {
  * List of Offers
  */
 exports.list = function (req, res) {
-  if (!req.user) {
+  /* if (!req.user) {
     return res.status(403).send({
       message: errorService.getErrorMessageByKey('forbidden'),
     });
-  }
+  } */
 
   // Validate required bounding box query parameters
   const coordinateKeys = [
@@ -608,7 +608,7 @@ exports.list = function (req, res) {
     }
   }
 
-  // Filter out users that do not share any circles with the authenticated user
+  /*   // Filter out users that do not share any circles with the authenticated user
   // and chose to not appear in those searches.
   const showOnlyInMyCirclesQueries = [{ showOnlyInMyCircles: false }];
   req.user.member?.forEach(function (membership) {
@@ -622,7 +622,7 @@ exports.list = function (req, res) {
     $match: {
       $or: showOnlyInMyCirclesQueries,
     },
-  });
+  }); */
 
   // Pick fields and convert to GeoJson Feature
   query.push({
