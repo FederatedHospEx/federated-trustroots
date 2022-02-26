@@ -152,7 +152,7 @@ Source: https://github.com/nvm-sh/nvm#installing-and-updating
 
 Log out and log back in to enable nvm and then install node.
 
-`nvm install node`
+`nvm install node 16`
 
 ### Install MongoDB
 Source: https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04-source
