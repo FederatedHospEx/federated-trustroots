@@ -33,7 +33,7 @@ export default function NavigationLoggedIn({ currentPath, onSignout, user }) {
             />
             <img
               className="hidden-md hidden-lg"
-              src="/img/tree-white.svg"
+              src="/img/favicon-white.svg"
               alt="Trustroots"
               width="31"
               height="31"
