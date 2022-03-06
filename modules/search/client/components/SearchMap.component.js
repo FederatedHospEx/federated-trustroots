@@ -314,19 +314,13 @@ export default function SearchMap({
     }
 
     const layerId = features[0]?.layer?.id;
-    // add also federated-host-maybe and no
-    const isFederated = features[0]?.properties?.offer === 'federated-host-yes';
 
     switch (layerId) {
       // Hosting or meeting offer
       case unclusteredPointLayer.id:
         if (features[0]?.id) {
           setSelectedState(features[0]);
-          if (!isFederated) {
-            openOfferById(features[0].id);
-          } else {
-            window.open('https://openhospitality.network'); // get this from elsewhere
-          }
+          openOfferById(features[0].id);
         }
         break;
       // Clusters
@@ -363,29 +357,16 @@ export default function SearchMap({
 
     try {
       // @TODO: cancellation when need to re-fetch
-      const dataFederated = await queryOffers(
-        {
-          filters,
-          ...boundingBox,
-        },
-        `http://192.168.0.134/`,
-      );
       const data = await queryOffers({
         filters,
         ...boundingBox,
       });
-      dataFederated.features.map(obj => {
-        const rObj = obj;
-        rObj.properties.offer = 'federated-host-yes';
-        return rObj;
-      });
-      data.features = data.features.concat(dataFederated.features);
       setOffers(data);
-    } catch (err) {
+    } catch {
       // @TODO Error handling
       process.env.NODE_ENV === 'development' &&
         // eslint-disable-next-line no-console
-        console.error(err);
+        console.error('Could not load offers.');
     }
   }
 

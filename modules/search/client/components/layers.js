@@ -69,15 +69,11 @@ export const unclusteredPointLayer = {
 
         // Host yes
         'host-yes',
-        '#3E6B71',
+        '#58ba58',
 
         // Host no
         'host-maybe',
-        '#ECEFF1',
-
-        // federated-host-yes
-        'federated-host-yes',
-        '#B0BEC5',
+        '#f2ae43',
 
         // Other:
         '#ccc',
