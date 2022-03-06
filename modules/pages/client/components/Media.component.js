@@ -19,7 +19,7 @@ export default function Media() {
               <h2 className="visible-xs-block">{t('Media')}</h2>
               <h2 className="hidden-xs">
                 <img
-                  src="/img/tree-white.svg"
+                  src="/img/favicon-white.svg"
                   alt="Trustroots"
                   width="75"
                   height="75"
