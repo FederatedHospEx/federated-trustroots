@@ -20,6 +20,6 @@ jobs:
           key: ${{secrets.SSH_KEY}} # Private key with matching public key authorized to access the server
 
           script: |
-            cd /var/www/$DOMAIN/ft
+            cd /var/www/${{ env.DOMAIN }}/ft
             git pull
             echo 'Deployment script finished successfully'
