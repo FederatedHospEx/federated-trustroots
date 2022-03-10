@@ -5,6 +5,9 @@ on:
   push:
     branches: [master]
 
+env:
+  DOMAIN: dev.refugees.openHospitality.network    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,6 +20,6 @@ jobs:
           key: ${{secrets.SSH_KEY}} # Private key with matching public key authorized to access the server
 
           script: |
-            cd fedi-trustroots
+            cd /var/www/$DOMAIN/ft
             git pull
-            echo 'Deployment successful'
+            echo 'Deployment script finished successfully'
