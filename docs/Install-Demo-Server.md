@@ -17,7 +17,7 @@ rsync --archive --chown=dsterry:dsterry ~/.ssh /home/dsterry
 
 Log out from root and log back in with the non-root user.
 
-## Install Nginx
+### Install Nginx
 Source: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04
 
 ```
@@ -25,8 +25,7 @@ sudo apt install nginx
 sudo ufw allow 'Nginx HTTP'
 ```
 
-## Passenger
-
+### Passenger
 Now we setup Passenger by running these commands one at a time.
 Source: https://www.phusionpassenger.com/library/install/nginx/install/oss/bionic/
 
@@ -128,7 +127,7 @@ Add the following at the top of the http section of /etc/nginx/nginx.conf
     passenger_show_version_in_header off;
 ```
 
-## SSL
+### SSL
 Next we’ll enable SSL using a Let’s Encrypt certificate. When prompted by the last command, choose Redirect for better security.
 Source: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
 Note: This ppa method is deprecated in 18.04.5 LTS so you’ll have to hit enter to add it.
@@ -140,19 +139,6 @@ sudo ufw allow 'Nginx Full'
 sudo ufw delete allow 'Nginx HTTP'
 sudo certbot --nginx -d $DOMAIN -d www.$DOMAIN
 ```
-
-Fedi-trustroots
-Next clone the repo.
-`git clone https://github.com/OpenHospitalityNetwork/fedi-trustroots.git /var/www/$DOMAIN/ft`
-
-Install nvm from the nvm-sh repo. It’s good practice to visit the repo and make sure there are no security incidents that might have compromised this script.
-Source: https://github.com/nvm-sh/nvm#installing-and-updating
-
-`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash`
-
-Log out and log back in to enable nvm and then install node.
-
-`nvm install node 16`
 
 ### Install MongoDB
 Source: https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04-source
@@ -172,14 +158,57 @@ sudo systemctl enable mongod
 
 For production it is also recommended to further secure mongodb as described here: https://www.digitalocean.com/community/tutorials/how-to-secure-mongodb-on-ubuntu-18-04
 
+### Install nvm 
+Install nvm from the nvm-sh repo. It’s good practice to visit the repo and make sure there are no security incidents that might have compromised this script.
+Source: https://github.com/nvm-sh/nvm#installing-and-updating
+
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash`
+
+Log out and log back in to enable nvm and then install node.
+
+`nvm install node 16`
+
+### Clone and configure the repo 
+Next clone the repo.
+`git clone https://github.com/OpenHospitalityNetwork/fedi-trustroots.git /var/www/$DOMAIN/ft`
+
+Add `port: 3001,` to `config/env/production.js` because webpack:server proxies from port 3000 to 3001.
+
+### Setup smtp service
+You can use for example SparkPost (EU)
+https://app.eu.sparkpost.com
+
+In SparkPost Configuration, add a sending domain. We use strict alignment subdomain, which means `mail.refugees.openHospitality.network` as both sending and bounce domains. You'll need to add `TXT` and `CNAME` records for the domain to your DNS.
+
+Create an API key for SparkPost and store it in the env variable:
+
+`export SPARKPOST_API_KEY=<your api key>`
+
+Configure mailer in `config/env/production.js`
+
+```
+  mailer: {
+    from: 'hello@mail.refugees.openHospitality.network',
+    options: {
+      host: 'smtp.eu.sparkpostmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'SMTP_Injection',
+        pass: process.env.SPARKPOST_API_KEY,
+      },
+    },
+  },
+```
+
+## Build and run
+
 Install dependencies, etc. This is the part that requires 4gb of ram. 
 
 ```
 sudo apt install make build-essential
 npm ci
 ```
-
-Add `port: 3001,` to `config/env/production.js` because webpack:server proxies from port 3000 to 3001.
 
 Compare your nginx config to this one and make any necessary changes: https://gist.github.com/weex/add4a96da52be1ca32e9698ce713b366
 
@@ -191,14 +220,13 @@ sudo systemctl restart nginx
 Run this command to build assets.
 `NODE_ENV=production npm run build`
 
-Then run these two in separate shells.
+Then run these three in separate shells.
 ```
 NODE_ENV=production npm run start:prod
 NODE_ENV=production npm run webpack:server
+NODE_ENV=production npm run start:worker:prod
 ```
 
 At this point you should be able to visit the site!
-
-Note: This setup cannot send emails so no users may finalize their profiles.
 
 If you have any problems while following this procedure, please make an issue at fedi-trustroots.
