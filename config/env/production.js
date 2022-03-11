@@ -9,6 +9,7 @@
  */
 
 module.exports = {
+  port: 3001,
   db: {
     uri:
       'mongodb://' +
@@ -28,5 +29,22 @@ module.exports = {
     autoIndex: false,
     // Check for MongoDB version compatibility on start
     checkCompatibility: false,
+  },
+  supportEmail: 'support@openHospitality.network',
+  mailer: {
+    from: 'hello@openHospitality.network',
+    options: {
+      // for pooled connection https://nodemailer.com/smtp/pooled/
+      // pool: true,
+      // port: 465,
+      // secure: true, // use TLS
+      host: 'smtp.eu.sparkpostmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'SMTP_Injection',
+        pass: process.env.SPARKPOST_API_KEY,
+      },
+    },
   },
 };

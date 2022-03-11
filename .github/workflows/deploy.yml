@@ -6,7 +6,7 @@ on:
     branches: [master]
 
 env:
-  DOMAIN: dev.refugees.openHospitality.network    
+  DOMAIN: dev.refugees.openHospitality.network
 
 jobs:
   deploy:

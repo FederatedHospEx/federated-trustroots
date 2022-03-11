@@ -14,7 +14,7 @@ module.exports = {
   featureFlags: {
     reference: true,
   },
-  brandName: 'ohn brandname',
+  brandName: 'placeholder',
   app: {
     title: 'Trustroots',
     description:
@@ -42,7 +42,7 @@ module.exports = {
   sessionSecret: 'MEAN',
   sessionCollection: 'sessions',
   domain: 'localhost:3000',
-  supportEmail: 'support@trustroots.org', // TO-address for support requests
+  supportEmail: 'support@openHospitality.network',
   supportVolunteerNames: ['Dario', 'Noah'], // Used as "from" name to send some automated emails
   surveyReactivateHosts: 'https://ideas.trustroots.org/?p=1302#page-1302', // Survey to send with host reactivation emails
   profileMinimumLength: 140, // Require User.profile.description to be >=140 chars to send messages
@@ -154,7 +154,7 @@ module.exports = {
     maxOfferValidFromNow: { days: 30 },
   },
   mailer: {
-    from: 'trustroots@localhost',
+    from: 'ohn@localhost',
     options: {
       service: false,
       auth: {

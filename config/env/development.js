@@ -41,7 +41,7 @@ module.exports = {
   // Configuration to work with default MailDev dev setup
   // https://github.com/djfarrelly/MailDev
   mailer: {
-    from: 'trustroots@localhost',
+    from: 'ohn@localhost',
     options: {
       host: 'localhost',
       port: 1025,
