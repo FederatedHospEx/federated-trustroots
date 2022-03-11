@@ -1,7 +1,9 @@
 # Trustroots Demo Server Setup
+
 This setup procedure is based on Server.md with Passenger as part of the setup. This was written to help create a federated hospitality system under the Open Hospitality Network project.
 
 ## System Setup
+
 Ubuntu 18.04 server with 2gb RAM (4gb recommended for development). Non-root user below is called dsterry.
 
 Run the following commands to setup a user and login via ssh from that user, just as you can to root (if keys were added during OS install by the host)
@@ -18,6 +20,7 @@ rsync --archive --chown=dsterry:dsterry ~/.ssh /home/dsterry
 Log out from root and log back in with the non-root user.
 
 ### Install Nginx
+
 Source: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04
 
 ```
@@ -26,6 +29,7 @@ sudo ufw allow 'Nginx HTTP'
 ```
 
 ### Passenger
+
 Now we setup Passenger by running these commands one at a time.
 Source: https://www.phusionpassenger.com/library/install/nginx/install/oss/bionic/
 
@@ -120,7 +124,7 @@ Add the following at the top of the http section of /etc/nginx/nginx.conf
 ```
     ##
     # Passenger for Fedi-trustroots
-    ## 
+    ##
 
     # passenger_ruby /usr/bin/passenger_free_ruby;
     passenger_nodejs /usr/local/bin/node;
@@ -128,6 +132,7 @@ Add the following at the top of the http section of /etc/nginx/nginx.conf
 ```
 
 ### SSL
+
 Next we’ll enable SSL using a Let’s Encrypt certificate. When prompted by the last command, choose Redirect for better security.
 Source: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
 Note: This ppa method is deprecated in 18.04.5 LTS so you’ll have to hit enter to add it.
@@ -141,6 +146,7 @@ sudo certbot --nginx -d $DOMAIN -d www.$DOMAIN
 ```
 
 ### Install MongoDB
+
 Source: https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04-source
 
 `curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -`
@@ -158,7 +164,8 @@ sudo systemctl enable mongod
 
 For production it is also recommended to further secure mongodb as described here: https://www.digitalocean.com/community/tutorials/how-to-secure-mongodb-on-ubuntu-18-04
 
-### Install nvm 
+### Install nvm
+
 Install nvm from the nvm-sh repo. It’s good practice to visit the repo and make sure there are no security incidents that might have compromised this script.
 Source: https://github.com/nvm-sh/nvm#installing-and-updating
 
@@ -168,13 +175,16 @@ Log out and log back in to enable nvm and then install node.
 
 `nvm install node 16`
 
-### Clone and configure the repo 
+### Clone and configure the repo
+
 Next clone the repo.
 `git clone https://github.com/OpenHospitalityNetwork/fedi-trustroots.git /var/www/$DOMAIN/ft`
 
-Add `port: 3001,` to `config/env/production.js` because webpack:server proxies from port 3000 to 3001.
+And copy local config file:
+`cp config/env/local-refugees.js config/env/local.js`
 
 ### Setup smtp service
+
 You can use for example SparkPost (EU)
 https://app.eu.sparkpost.com
 
@@ -184,26 +194,17 @@ Create an API key for SparkPost and store it in the env variable:
 
 `export SPARKPOST_API_KEY=<your api key>`
 
-Configure mailer in `config/env/production.js`
+Make sure `mailer.from` is correctly set either in `config/env/production.js` or `config/env/local.js`
 
 ```
   mailer: {
     from: 'hello@mail.refugees.openHospitality.network',
-    options: {
-      host: 'smtp.eu.sparkpostmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'SMTP_Injection',
-        pass: process.env.SPARKPOST_API_KEY,
-      },
-    },
   },
 ```
 
 ## Build and run
 
-Install dependencies, etc. This is the part that requires 4gb of ram. 
+Install dependencies, etc. This is the part that requires 4gb of ram.
 
 ```
 sudo apt install make build-essential
@@ -221,6 +222,7 @@ Run this command to build assets.
 `NODE_ENV=production npm run build`
 
 Then run these three in separate shells.
+
 ```
 NODE_ENV=production npm run start:prod
 NODE_ENV=production npm run webpack:server
