@@ -40,7 +40,7 @@ export default function Team({ user }) {
               alt="Trustroots"
               className="hidden-xs"
               height="120"
-              src="/placeholder.png"
+              src="/img/favicon.svg"
               width="120"
             />
             <br />

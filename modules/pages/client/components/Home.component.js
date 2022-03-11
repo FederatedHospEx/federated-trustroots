@@ -121,7 +121,7 @@ export default function Home({ user, isNativeMobileApp }) {
                 <div className="col-xs-12 col-sm-8 col-sm-offset-2">
                   <img
                     className="home-logo hidden-xs center-block"
-                    src="/img/logo/Placeholder_view_vector.svg"
+                    src="/img/logo/white.svg"
                     alt="Trustroots"
                     width="210"
                     height="210"
@@ -129,7 +129,7 @@ export default function Home({ user, isNativeMobileApp }) {
                   />
                   <img
                     className="home-logo visible-xs-block center-block"
-                    src="/img/logo/Placeholder_view_vector.svg"
+                    src="/img/logo/white.svg"
                     alt="Trustroots"
                     width="130"
                     height="130"

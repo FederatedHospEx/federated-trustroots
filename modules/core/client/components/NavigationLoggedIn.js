@@ -26,7 +26,7 @@ export default function NavigationLoggedIn({ currentPath, onSignout, user }) {
           <a href="/" className="hidden-xs" aria-hidden="true">
             <img
               className="hidden-xs hidden-sm"
-              src="/placeholder.png"
+              src="/img/logo/horizontal-white.svg"
               alt="Trustroots"
               width="177"
               height="31"
