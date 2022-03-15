@@ -13,10 +13,12 @@ import Board from '@/modules/core/client/components/Board.js';
 import BoardCredits from '@/modules/core/client/components/BoardCredits.js';
 import ManifestoText from './ManifestoText.component.js';
 import Screenshot from '@/modules/core/client/components/Screenshot.js';
+/*
 import screenshotProfilePng from '../img/screenshot-profile.png';
 import screenshotProfilePng2x from '../img/screenshot-profile-2x.png';
 import screenshotProfileWebp from '../img/screenshot-profile.webp';
 import screenshotProfileWebp2x from '../img/screenshot-profile-2x.webp';
+*/
 import screenshotSearchPng from '../img/screenshot-search.png';
 import screenshotSearchPng2x from '../img/screenshot-search-2x.png';
 import screenshotSearchWebp from '../img/screenshot-search.webp';
@@ -230,6 +232,7 @@ export default function Home({ user, isNativeMobileApp, photoCredits }) {
       </section>
 
       {/* Share */}
+      {/*
       <section className="home-how">
         <div className="container">
           <div className="row">
@@ -258,6 +261,7 @@ export default function Home({ user, isNativeMobileApp, photoCredits }) {
           </div>
         </div>
       </section>
+      */}
 
       {circles.length > 0 && (
         <section className="home-how">
