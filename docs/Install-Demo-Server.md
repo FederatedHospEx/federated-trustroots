@@ -190,7 +190,7 @@ https://app.eu.sparkpost.com
 
 In SparkPost Configuration, add a sending domain. We use strict alignment subdomain, which means `mail.refugees.openHospitality.network` as both sending and bounce domains. You'll need to add `TXT` and `CNAME` records for the domain to your DNS.
 
-Create an API key for SparkPost and store it in the env variable:
+Create an API key for SparkPost and store it in the env variable in your `~/.bash_profile` file:
 
 `export SPARKPOST_API_KEY=<your api key>`
 
