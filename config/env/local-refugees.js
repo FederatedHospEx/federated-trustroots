@@ -10,26 +10,25 @@
  */
 
 module.exports = {
-  // below options should rather be configured in production / default
-  https: true,
-  brandName: 'Refugees Welcome',
+  // default.js
   app: {
-    title: 'Refugees Welcome',
+    title: 'Trustroots 4 Refugees',
     description:
-      'A network of citizens sharing flats, rooms and houses with people escaping from the war. We want a world that encourages peace and trust.',
+      'A network of citizens sharing rooms, flats and houses with people escaping from the war. We want a world where peace and trust prevail.',
   },
-  domain: 'refugees.openHospitality.network',
+  // production.js
+  // domain: 'refugees.openHospitality.network',
   supportEmail: 'support@openHospitality.network',
-  mailer: {
-    from: 'hello@mail.refugees.openHospitality.network',
-  },
+  // mailer: {
+  //   from: 'hello@mail.refugees.openHospitality.network',
+  // },
+  // local.js
   /*
   featureFlags: {
     ...require('development').featureFlags
     // List your fature flag modifications here
   }
   */
-  /*
   // Appears on top of every page for authenticated users.
   // There's no way turning them off permanently,
   // so remember to keep them visible only limited times.
@@ -37,9 +36,9 @@ module.exports = {
     enabled: true,
     // Can contain HTML
     // You can access user object like this: `{{app.user.displayName}}`
-    message: 'Hey {{app.user.displayName}}!'
+    message:
+      'This is a copy of Trustroots.org. While we are working to tailor it to the needs of refugees, you can already offer or request a stay. Please be understanding.',
   },
-  */
   // Uncomment if you have installed InfluxDB and would like to store collected statistics
   /*
   influxdb: {

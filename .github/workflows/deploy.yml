@@ -6,7 +6,7 @@ on:
     branches: [master]
 
 env:
-  DOMAIN: dev.refugees.openHospitality.network
+  DOMAIN: dev.sleepy.bike
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Deploy the app
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: ${{secrets.SSH_HOST}} # IP address of the server you wish to ssh into
+          host: ${{secrets.SSH_HOST}} # Address of the server you wish to ssh into
           username: ${{secrets.SSH_USERNAME}} # User of the server you want to ssh into
           key: ${{secrets.SSH_KEY}} # Private key with matching public key authorized to access the server
 

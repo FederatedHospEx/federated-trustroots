@@ -16,9 +16,9 @@ module.exports = {
   },
   brandName: 'placeholder',
   app: {
-    title: 'Trustroots',
+    title: 'Sleepy Bike',
     description:
-      'Travellers community for sharing, hosting and getting people together. We want a world that encourages trust and adventure.',
+      'A community for bicycle touring travellers and those who want to host them. We want a world that encourages trust and adventure.',
   },
 
   // Appears on top of every page for authenticated users.

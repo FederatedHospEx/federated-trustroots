@@ -9,6 +9,7 @@
  */
 
 module.exports = {
+  https: true,
   port: 3001,
   db: {
     uri:
@@ -30,9 +31,9 @@ module.exports = {
     // Check for MongoDB version compatibility on start
     checkCompatibility: false,
   },
-  supportEmail: 'support@openHospitality.network',
+  supportEmail: 'support@sleepy.bike',
   mailer: {
-    from: 'hello@openHospitality.network',
+    from: 'hello@sleepy.bike',
     options: {
       // for pooled connection https://nodemailer.com/smtp/pooled/
       // pool: true,
