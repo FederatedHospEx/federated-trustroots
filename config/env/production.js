@@ -10,6 +10,7 @@
 
 module.exports = {
   https: true,
+  domain: 'sleepy.bike',
   port: 3001,
   db: {
     uri:
